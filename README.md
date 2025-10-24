@@ -23,5 +23,5 @@ A RESTful API that fetches country data from external APIs, stores it in a datab
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ADEMOLA200/hng-country-api
 cd hng-country-api
