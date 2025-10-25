@@ -15,19 +15,16 @@ func SetupRoutes() *gin.Engine {
 	countryController := controllers.NewCountryController()
 	statusController := controllers.NewStatusController()
 
-	api := router.Group("/api")
+	countries := router.Group("/countries")
 	{
-		countries := api.Group("/countries")
-		{
-			countries.POST("/refresh", countryController.RefreshCountries)
-			countries.GET("", countryController.GetAllCountries)
-			countries.GET("/image", countryController.GetCountriesImage)
-			countries.GET("/:name", countryController.GetCountryByName)
-			countries.DELETE("/:name", countryController.DeleteCountry)
-		}
-
-		api.GET("/status", statusController.GetStatus)
+		countries.POST("/refresh", countryController.RefreshCountries)
+		countries.GET("", countryController.GetAllCountries)
+		countries.GET("/image", countryController.GetCountriesImage)
+		countries.GET("/:name", countryController.GetCountryByName)
+		countries.DELETE("/:name", countryController.DeleteCountry)
 	}
+
+	router.GET("/status", statusController.GetStatus)
 
 	router.GET("/health", statusController.HealthCheck)
 
